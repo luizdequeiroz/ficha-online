@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Chat = "OK";
+}
+
+<div class="borda-cadastro">
+    <div class="conteudo-cadastro">
+        <div class="text-high">Seu ID de Sessão: <strong>@Session.SessionID</strong></div>
+        <div class="text-form scrollable" id="messages">
+            <ul></ul>
+        </div>
+        <div>
+            <input class="form-control" placeholder="Digite aqui sua mensagem..." type="text" id="txtMsg" />
+            <a id="btnEnv" class="btn btn-primary">Enviar</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,114 @@
+﻿@model FichaOnline.Models.Ficha
+@{
+    ViewBag.Background = "transparent";
+    
+    var titulo = "Uma das minhas fichas.";
+    if (((FichaOnline.Models.Usuario)Session["usuario"]).Id != Model.UsuarioId)
+    {
+        var jogador = new FichaOnline.Models.DAO.UsuarioDao().SelecionarPorId(Model.UsuarioId);
+        titulo = "Ficha do jogador " + jogador.Nome + " (" + jogador.Email + ")";
+    }
+    int nivel = (Model.Adre + Model.Ataq + Model.Defe + Model.Dest + Model.Forc + Model.Inte + Model.Resi + Model.Sabe + Model.Velo) / 9;
+    var PV = Model.Resi * 10;
+    var nota = "NÍVEL: " + nivel.ToString("00") + "\n"
+              + "PV: " + PV.ToString("000") + "\n"
+              + "\n" + Model.Nota;
+}
+
+<div class="centralizar">
+    <div class="borda-cadastro borda-nova">
+        <div class="conteudo-cadastro terrain scrollable conteudo-nova">
+            <fieldset>
+                <legend class="text-whitesmoke">@titulo</legend>
+                <div class="col-md-2">
+                    <div class="col-md-12 no-padding"><label class="text-form">ADRE</label> - <span class="text-high-high">@Model.Adre.ToString("00")</span></div>
+                    <div class="col-md-12 no-padding"><label class="text-form">ATAQ</label> - <span class="text-high-high">@Model.Ataq.ToString("00")</span></div>
+                    <div class="col-md-12 no-padding"><label class="text-form">DEFE</label> - <span class="text-high-high">@Model.Defe.ToString("00")</span></div>
+                    <div class="col-md-12 no-padding"><label class="text-form">DEST</label> - <span class="text-high-high">@Model.Dest.ToString("00")</span></div>
+                    <div class="col-md-12 no-padding"><label class="text-form">FORÇ</label> - <span class="text-high-high">@Model.Forc.ToString("00")</span></div>
+                    <div class="col-md-12 no-padding"><label class="text-form">INTE</label> - <span class="text-high-high">@Model.Inte.ToString("00")</span></div>
+                    <div class="col-md-12 no-padding"><label class="text-form">RESI</label> - <span class="text-high-high">@Model.Resi.ToString("00")</span></div>
+                    <div class="col-md-12 no-padding"><label class="text-form">SABE</label> - <span class="text-high-high">@Model.Sabe.ToString("00")</span></div>
+                    <div class="col-md-12 no-padding"><label class="text-form">VELO</label> - <span class="text-high-high">@Model.Velo.ToString("00")</span></div>
+                </div>
+                <div class="col-md-10">
+                    <div class="col-md-3">
+                        <div class="col-md-12 no-padding"><label class="text-form">Vital</label> - <span class="text-high-high">@Model.Vital.ToString("00")</span></div>
+                        <div class="col-md-12 no-padding"><label class="text-form">Sorte</label> - <span class="text-high-high">@Model.Sorte.ToString("00")</span></div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="col-md-8 no-padding"><label class="text-form">Nome:</label> <span class="text-high-high">@Model.Nome</span></div>
+                        <div class="col-md-4 no-padding"><label class="text-form">Idade:</label> <span class="text-high-high">@Model.Idade.ToString("00")</span></div>
+                        <div class="col-md-8 no-padding"><label class="text-form">Classe:</label> <span class="text-high-high">@Model.Classe</span></div>
+                        <div class="col-md-4 no-padding"><label class="text-form">Raça:</label> <span class="text-high-high">@Model.Raca</span></div>
+                    </div>
+                    <div class="col-md-6">
+                        <strong class="text-high-high">Capacidades</strong>
+                        <hr class="no-margin" />
+                        <div class="col-md-12 scrollable ficha-bloco">
+                            @Html.Action("Listar", "Peculiaridade", new { fichaId = Model.Id, tipo = "cap" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <strong class="text-high-high">Perícias</strong>
+                        <hr class="no-margin" />
+                        <div class="col-md-12 scrollable ficha-bloco">
+                            @Html.Action("Listar", "Peculiaridade", new { fichaId = Model.Id, tipo = "per" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-7 no-padding">
+                        <div class="col-md-12 no-padding">
+                            <strong class="text-high-high">Propriedades/Riquezas</strong>
+                            <hr class="no-margin" />
+                            <div class="col-md-12 scrollable ficha-bloco">
+                                @Html.Action("Listar", "PRIA", new { fichaId = Model.Id, tipo = "pr/ri" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <strong class="text-high-high">Desvantagens</strong>
+                        <hr class="no-margin" />
+                        <div class="col-md-12 scrollable">
+                            @Html.Action("Listar", "Peculiaridade", new { fichaId = Model.Id, tipo = "des" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-7 no-padding">
+                        <div class="col-md-12 no-padding">
+                            <strong class="text-high-high">Itens/Armas</strong>
+                            <hr class="no-margin" />
+                            <div class="col-md-12 scrollable ficha-bloco">
+                                @Html.Action("Listar", "PRIA", new { fichaId = Model.Id, tipo = "it/ar" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <strong class="text-high-high">Anotações do Mestre</strong>
+                        <hr class="no-margin" />
+                        <textarea class="form-control col-md-12" rows="10" readonly>@nota</textarea>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-7 no-padding">
+                        <div class="col-md-12 no-padding">
+                            <strong class="text-high-high">Pontos de Experiência</strong>
+                            <hr class="no-margin" />
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <strong class="text-high-high">Ações</strong>
+                        <hr class="no-margin" />
+                        <div class="btn-group btn-group-justified bottom-0">
+                            <a href="/Ficha/Minhas" class="btn btn-success">Voltar</a>
+                            <a href="/Ficha/Editar/@Model.Id" class="btn btn-primary">Editar</a>
+                            <a class="btn btn-danger">Excluir</a>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</div>

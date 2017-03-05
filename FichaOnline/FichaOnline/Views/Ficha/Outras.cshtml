@@ -1,0 +1,32 @@
+﻿@model List<FichaOnline.Models.Ficha>
+@{
+    ViewBag.Background = "transparent";
+}
+<div class="scrollable">
+    @if (Model.Count > 0)
+    {
+        foreach (var f in Model)
+        {
+            int nivel = (f.Adre + f.Ataq + f.Defe + f.Dest + f.Forc + f.Inte + f.Resi + f.Sabe + f.Velo) / 9;
+            var PV = f.Resi * 10;
+            <div class="col-lg-3 col-md-3 col-sm-3 borda-item">
+                <div class="conteudo-item terrain">
+                    <fieldset>
+                        <legend class="text-whitesmoke no-margin">@f.Nome</legend>
+                        <div class="col-md-8 no-padding"><label class="text-form">Raça</label> - <span class="text-high-high">@f.Raca</span></div>
+                        <div class="col-md-4 no-padding"><label class="text-form">Idade</label> - <span class="text-high-high">@f.Idade.ToString("00")</span></div>
+                        <div class="col-md-12 no-padding"><label class="text-form">Classe</label> - <span class="text-high-high">@f.Classe</span></div>
+                        <div class="col-md-8 no-padding"><label class="text-form">NÍVEL</label> - <span class="text-high-high">@nivel.ToString("00")</span></div>
+                        <div class="col-md-4 no-padding"><label class="text-form">PV</label> - <span class="text-high-high">@PV</span></div>
+                        <hr />
+                        <div class="btn-group btn-group-justified bottom-0">
+                            <a href="/Ficha/Ver/@f.Id" class="btn btn-success">Ver</a>
+                            <a href="/Ficha/Editar/@f.Id" class="btn btn-primary">Editar</a>
+                            <a class="btn btn-danger">Excluir</a>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        }
+    }
+</div>

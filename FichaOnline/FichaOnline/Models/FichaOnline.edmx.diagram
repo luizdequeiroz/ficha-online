@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="df1a425386c24b8b95dfbdde5d6420b2" Name="Diagram1" DisplayType="true" >
+        <EntityTypeShape EntityType="FichaOnline.Usuario" Width="1.5" PointX="0.5" PointY="1.125" />
+        <EntityTypeShape EntityType="FichaOnline.Ficha" Width="2" PointX="2.5" PointY="0.5" />
+        <AssociationConnector Association="FichaOnline.UsuarioFicha" />
+        <EntityTypeShape EntityType="FichaOnline.Peculiaridade" Width="1.5" PointX="5.125" PointY="0.5" />
+        <EntityTypeShape EntityType="FichaOnline.Pratica" Width="1.5" PointX="7.125" PointY="0.5" />
+        <AssociationConnector Association="FichaOnline.FichaPeculiaridade" />
+        <AssociationConnector Association="FichaOnline.PeculiaridadePratica" />
+        <EntityTypeShape EntityType="FichaOnline.PropriedadeRiquezaItemArma" Width="2.375" PointX="5.125" PointY="3.25" />
+        <AssociationConnector Association="FichaOnline.FichaPropriedadeRiquezaItemArma" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

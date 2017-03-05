@@ -1,0 +1,97 @@
+﻿@model FichaOnline.Models.Facade.CadaFacade
+
+<script>
+    @Html.Raw(Session["alert"])
+    @{ Session.Remove("alert"); }
+</script>
+<div class="centralizar">
+    <div class="borda-cadastro">
+        <div class="conteudo-cadastro terrain">
+            <fieldset>
+                <legend class="text-whitesmoke">Cadastrar</legend>
+                @using (Html.BeginForm())
+                {
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <label class="control-label" for="Nome">
+                                    <span class="text-form">Nome</span>
+                                    <span class="text-danger">*</span>
+                                    @Html.ValidationMessageFor(model => model.Nome)
+                                </label>
+                                @Html.TextBoxFor(model => model.Nome, new { @class = "form-control", placeholder = "seu nome" })
+                            </div>
+                            <div class="col-md-6">
+                                <label class="control-label" for="Email">
+                                    <span class="text-form">E-mail</span>
+                                    <span class="text-danger">*</span>
+                                    @Html.ValidationMessageFor(model => model.Email)
+                                </label>
+                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "exemplo@email.com" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <label class="control-label" for="Senha">
+                                    <span class="text-form">Senha</span>
+                                    <span class="text-danger">*</span>
+                                    @Html.ValidationMessageFor(model => model.Senha)
+                                </label>
+                                @Html.TextBoxFor(model => model.Senha, new { type = "password", @class = "form-control", placeholder = "*********" })
+                            </div>
+                            <div class="col-md-6">
+                                <label class="control-label" for="RepSenha">
+                                    <span class="text-form">Confirmação da Senha</span>
+                                    <span class="text-danger">*</span>
+                                    @Html.ValidationMessageFor(model => model.RepSenha)
+                                </label>
+                                @Html.TextBoxFor(model => model.RepSenha, new { type = "password", @class = "form-control", placeholder = "*********" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label class="control-label" for="DataNascimento">
+                                    <span class="text-form">Data de Nascimento</span>
+                                    <span class="text-danger">*</span>
+                                    @Html.ValidationMessageFor(model => model.DataNascimento)
+                                </label>
+                                @Html.TextBoxFor(model => model.DataNascimento, new { @class = "form-control", placeholder = "dd/mm/aaaa" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label class="control-label" for="Pergunta">
+                                    <span class="text-form">Pergunta de Segurança</span>
+                                    <span class="text-danger">*</span>
+                                    @Html.ValidationMessageFor(model => model.Pergunta)
+                                </label>
+                                @Html.TextBoxFor(model => model.Pergunta, new { @class = "form-control", placeholder = "Insira sua pergunta..." })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label class="control-label" for="Resposta">
+                                    <span class="text-form">Resposta de Segurança</span>
+                                    <span class="text-danger">*</span>
+                                    @Html.ValidationMessageFor(model => model.Resposta)
+                                </label>
+                                @Html.TextBoxFor(model => model.Resposta, new { @class = "form-control", placeholder = "Insira sua resposta..." })
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-flat-no-radius btn-block btn-primary">CADASTRAR</button>
+                    <hr />
+                    <a href="/Entrada/Entrar" class="btn btn-sm btn-block btn-danger">Cancelar</a>
+                }
+            </fieldset>
+        </div>
+    </div>
+</div>
+<script>
+    jQuery(function ($) {
+        $('#DataNascimento').mask('99/99/9999');
+    });
+</script>
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

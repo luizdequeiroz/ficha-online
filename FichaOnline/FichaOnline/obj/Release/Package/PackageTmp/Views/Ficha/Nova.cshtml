@@ -1,0 +1,169 @@
+﻿@model FichaOnline.Models.Facade.FichaFacade
+@{
+    ViewBag.Background = "transparent";
+}
+<script>
+    @Html.Raw(Session["alert"])
+    @{ Session.Remove("alert"); }
+
+    $(function () {
+        $('#Classe').autocomplete({
+            source: '@Url.Action("AutocompleteClasse")'
+        });
+
+        $('#Raca').autocomplete({
+            source: '@Url.Action("AutocompleteRaca")'
+        });
+
+        $('#Mestre').autocomplete({
+            source: '@Url.Action("AutocompleteMestre")'
+        });
+    });    
+</script>
+<!--<button class="btn btn-xs btn-danger btn-voltar" title="Voltar" onclick="history.go(-1)">&lArr;</button>
+<button class="btn btn-xs btn-danger btn-avancar" title="Avançar" onclick="history.forward()">&rArr;</button>-->
+<div class="centralizar">
+    <div class="borda-cadastro borda-nova">
+        <div class="conteudo-cadastro terrain scrollable conteudo-nova">
+            <fieldset>
+                <legend class="text-whitesmoke">Nova Ficha</legend>
+                @using (Html.BeginForm())
+                {
+                    <div id="summary">
+                        @Html.ValidationSummary("Preencha os campos obrigatórios!")
+                    </div>
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label class="control-label" for="Nome">
+                                    <span class="text-form">Nome</span>
+                                    <span class="text-danger">*</span>
+                                </label>
+                                @Html.TextBoxFor(model => model.Nome, new { @class = "form-control" })
+                            </div>
+                            <div class="col-md-2">
+                                <label class="control-label" for="Idade">
+                                    <span class="text-form">Idade</span>
+                                    <span class="text-danger">*</span>
+                                </label>
+                                @Html.TextBoxFor(model => model.Idade, new { type = "number", @class = "form-control" })
+                            </div>
+                            <div class="col-md-3">
+                                <label class="control-label" for="Classe">
+                                    <span class="text-form">Classe</span>
+                                </label>
+                                @Html.TextBoxFor(model => model.Classe, new { @class = "form-control" })
+                            </div>
+                            <div class="col-md-3">
+                                <label class="control-label" for="Raca">
+                                    <span class="text-form">Raça</span>
+                                </label>
+                                @Html.TextBoxFor(model => model.Raca, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label class="control-label" for="Nivel">
+                                    <span class="text-form">Nível: </span>
+                                </label>
+                                <div>
+                                    <label for="D6" class="text-high radio-inline text-whitesmoke"><input type="radio" class="lg" name="Nivel" id="D6" value="6" />D6</label>
+                                    <label for="D8" class="text-high radio-inline text-whitesmoke"><input type="radio" class="lg" name="Nivel" id="D8" value="8" />D8</label>
+                                    <label for="D10" class="text-high radio-inline text-whitesmoke"><input type="radio" class="lg" name="Nivel" id="D10" value="10" />D10</label>
+                                    <label for="D12" class="text-high radio-inline text-whitesmoke"><input type="radio" class="lg" name="Nivel" id="D12" value="12" />D12</label> 
+                                </div>                                
+                            </div>
+                            <div class="col-md-4">
+                                <label class="control-label">
+                                    <span class="text-form">Pontos p/ Testes: </span>
+                                </label>
+                                <input class="form-control pts" id="pts" readonly />
+                            </div>
+                            <div class="col-md-4">
+                                <label class="control-label">
+                                    <span class="text-form">Mestre: </span> @Html.ValidationMessageFor(model => model.Mestre)
+                                </label>
+                                @Html.TextBoxFor(model => model.Mestre, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-2">
+                                <label class="control-label" for="Adre">
+                                    <span class="text-form">Adrenalina</span>
+                                </label>
+                                @Html.TextBoxFor(model => model.Adre, new { min = "0", type = "number", @class = "form-control teste" })
+                            </div>
+                            <div class="col-md-2">
+                                <label class="control-label" for="Ataq">
+                                    <span class="text-form">Ataque</span>
+                                </label>
+                                @Html.TextBoxFor(model => model.Ataq, new { min = "0", type = "number", @class = "form-control teste" })
+                            </div>
+                            <div class="col-md-2">
+                                <label class="control-label" for="Defe">
+                                    <span class="text-form">Defesa</span>
+                                </label>
+                                @Html.TextBoxFor(model => model.Defe, new { min = "0", type = "number", @class = "form-control teste" })
+                            </div>
+                            <div class="col-md-2">
+                                <label class="control-label" for="Dest">
+                                    <span class="text-form">Destresa</span>
+                                </label>
+                                @Html.TextBoxFor(model => model.Dest, new { min = "0", type = "number", @class = "form-control teste" })
+                            </div>
+                            <div class="col-md-2">
+                                <label class="control-label" for="Forc">
+                                    <span class="text-form">Força</span>
+                                </label>
+                                @Html.TextBoxFor(model => model.Forc, new { min = "0", type = "number", @class = "form-control teste" })
+                            </div>
+                            <div class="col-md-2">
+                                <label class="control-label" for="Inte">
+                                    <span class="text-form">Inteligência</span>
+                                </label>
+                                @Html.TextBoxFor(model => model.Inte, new { min = "0", type = "number", @class = "form-control teste" })
+                            </div>
+                            <div class="col-md-2">
+                                <label class="control-label" for="Resi">
+                                    <span class="text-form">Resistência</span>
+                                </label>
+                                @Html.TextBoxFor(model => model.Resi, new { min = "0", type = "number", @class = "form-control teste" })
+                            </div>
+                            <div class="col-md-2">
+                                <label class="control-label" for="Sabe">
+                                    <span class="text-form">Sabedoria</span>
+                                </label>
+                                @Html.TextBoxFor(model => model.Sabe, new { min = "0", type = "number", @class = "form-control teste" })
+                            </div>
+                            <div class="col-md-2">
+                                <label class="control-label" for="Velo">
+                                    <span class="text-form">Velocidade</span>
+                                </label>
+                                @Html.TextBoxFor(model => model.Velo, new { min = "0", type = "number", @class = "form-control teste" })
+                            </div>
+                            <div class="col-md-2">
+                                <label class="control-label" for="Vital">
+                                    <span class="text-form">Vitalidade</span>
+                                </label>
+                                @Html.TextBoxFor(model => model.Vital, new { min = "0", type = "number", @class = "form-control" })
+                            </div>
+                            <div class="col-md-2">
+                                <label class="control-label" for="Sorte">
+                                    <span class="text-form">Sorte</span>
+                                </label>
+                                @Html.TextBoxFor(model => model.Sorte, new { min = "0", @class = "form-control", onclick = "sorte(this.id)" })
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-flat-no-radius btn-block btn-primary" onclick="$('#summary').attr('class', 'field-validation-error')">CADASTRAR</button>
+                    <hr />
+                    <a href="/Desktop/Inicio" target="_top" class="btn btn-sm btn-block btn-danger">Cancelar</a>
+                }
+            </fieldset>
+        </div>
+
+    </div>
+</div>
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

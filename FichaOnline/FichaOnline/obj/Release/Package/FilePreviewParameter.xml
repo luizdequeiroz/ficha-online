@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="fichaonline" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\luizd\\Dropbox\\RolePlayingGame\\Sistema\ -\ FichaOnline\\FichaOnline\\FichaOnline\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\luizd\\Dropbox\\RolePlayingGame\\Sistema\ -\ FichaOnline\\FichaOnline\\FichaOnline\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="FichaOnlineContainer-Web.config Connection String" description="" value="metadata=res://*/Models.FichaOnline.csdl|res://*/Models.FichaOnline.ssdl|res://*/Models.FichaOnline.msl;provider=System.Data.SqlClient;provider connection string=&quot;Data Source=ficha.database.windows.net;Initial Catalog=FichaOnline;Persist Security Info=True;User ID=ficha;Password=@9Protego9Totalis;MultipleActiveResultSets=True;Application Name=EntityFramework&quot;" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\luizd\\Dropbox\\RolePlayingGame\\Sistema\ -\ FichaOnline\\FichaOnline\\FichaOnline\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='FichaOnlineContainer']/@connectionString" />
+  </parameter>
+</parameters>

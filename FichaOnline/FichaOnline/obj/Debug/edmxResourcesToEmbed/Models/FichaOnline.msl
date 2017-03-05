@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FichaOnlineStoreContainer" CdmEntityContainer="FichaOnlineContainer">
+    <EntitySetMapping Name="UsuarioSet">
+      <EntityTypeMapping TypeName="IsTypeOf(FichaOnline.Usuario)">
+        <MappingFragment StoreEntitySet="UsuarioSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Senha" ColumnName="Senha" />
+          <ScalarProperty Name="DataCadastro" ColumnName="DataCadastro" />
+          <ScalarProperty Name="Pergunta" ColumnName="Pergunta" />
+          <ScalarProperty Name="Resposta" ColumnName="Resposta" />
+          <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FichaSet">
+      <EntityTypeMapping TypeName="IsTypeOf(FichaOnline.Ficha)">
+        <MappingFragment StoreEntitySet="FichaSet">
+          <ScalarProperty Name="PtsPeculiaridades" ColumnName="PtsPeculiaridades" />
+          <ScalarProperty Name="Pontos" ColumnName="Pontos" />
+          <ScalarProperty Name="MestreId" ColumnName="MestreId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Idade" ColumnName="Idade" />
+          <ScalarProperty Name="Classe" ColumnName="Classe" />
+          <ScalarProperty Name="Raca" ColumnName="Raca" />
+          <ScalarProperty Name="Adre" ColumnName="Adre" />
+          <ScalarProperty Name="Ataq" ColumnName="Ataq" />
+          <ScalarProperty Name="Defe" ColumnName="Defe" />
+          <ScalarProperty Name="Dest" ColumnName="Dest" />
+          <ScalarProperty Name="Forc" ColumnName="Forc" />
+          <ScalarProperty Name="Inte" ColumnName="Inte" />
+          <ScalarProperty Name="Resi" ColumnName="Resi" />
+          <ScalarProperty Name="Sabe" ColumnName="Sabe" />
+          <ScalarProperty Name="Velo" ColumnName="Velo" />
+          <ScalarProperty Name="Vital" ColumnName="Vital" />
+          <ScalarProperty Name="Sorte" ColumnName="Sorte" />
+          <ScalarProperty Name="Nota" ColumnName="Nota" />
+          <ScalarProperty Name="Experiencia" ColumnName="Experiencia" />
+          <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PeculiaridadeSet">
+      <EntityTypeMapping TypeName="IsTypeOf(FichaOnline.Peculiaridade)">
+        <MappingFragment StoreEntitySet="PeculiaridadeSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="Teste" ColumnName="Teste" />
+          <ScalarProperty Name="FichaId" ColumnName="FichaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PraticaSet">
+      <EntityTypeMapping TypeName="IsTypeOf(FichaOnline.Pratica)">
+        <MappingFragment StoreEntitySet="PraticaSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="Mod" ColumnName="Mod" />
+          <ScalarProperty Name="PeculiaridadeId" ColumnName="PeculiaridadeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PropriedadeRiquezaItemArmaSet">
+      <EntityTypeMapping TypeName="IsTypeOf(FichaOnline.PropriedadeRiquezaItemArma)">
+        <MappingFragment StoreEntitySet="PropriedadeRiquezaItemArmaSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Subtipo" ColumnName="Subtipo" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="PesoQuantidade" ColumnName="PesoQuantidade" />
+          <ScalarProperty Name="ValorDano" ColumnName="ValorDano" />
+          <ScalarProperty Name="FichaId" ColumnName="FichaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

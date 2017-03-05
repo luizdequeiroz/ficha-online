@@ -1,0 +1,75 @@
+C:\Users\Luiz de Queiroz\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\FichaOnline.dll.config
+C:\Users\Luiz de Queiroz\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\FichaOnline.dll
+C:\Users\Luiz de Queiroz\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\FichaOnline.pdb
+C:\Users\Luiz de Queiroz\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\Antlr3.Runtime.dll
+C:\Users\Luiz de Queiroz\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\EntityFramework.dll
+C:\Users\Luiz de Queiroz\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Luiz de Queiroz\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+C:\Users\Luiz de Queiroz\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\Newtonsoft.Json.dll
+C:\Users\Luiz de Queiroz\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Net.Http.Formatting.dll
+C:\Users\Luiz de Queiroz\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Web.Http.dll
+C:\Users\Luiz de Queiroz\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Web.Http.WebHost.dll
+C:\Users\Luiz de Queiroz\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Web.Mvc.dll
+C:\Users\Luiz de Queiroz\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Web.Optimization.dll
+C:\Users\Luiz de Queiroz\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Web.Providers.dll
+C:\Users\Luiz de Queiroz\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Web.Razor.dll
+C:\Users\Luiz de Queiroz\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Luiz de Queiroz\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Web.WebPages.dll
+C:\Users\Luiz de Queiroz\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Web.WebPages.Razor.dll
+C:\Users\Luiz de Queiroz\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\WebGrease.dll
+C:\Users\Luiz de Queiroz\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\EntityFramework.xml
+C:\Users\Luiz de Queiroz\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\Newtonsoft.Json.xml
+C:\Users\Luiz de Queiroz\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Net.Http.Formatting.xml
+C:\Users\Luiz de Queiroz\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Web.Http.xml
+C:\Users\Luiz de Queiroz\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Web.Http.WebHost.xml
+C:\Users\Luiz de Queiroz\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Web.Mvc.xml
+C:\Users\Luiz de Queiroz\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Web.Razor.xml
+C:\Users\Luiz de Queiroz\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Web.WebPages.xml
+C:\Users\Luiz de Queiroz\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Luiz de Queiroz\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Web.WebPages.Razor.xml
+C:\Users\Luiz de Queiroz\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\obj\Debug\FichaOnline.dll
+C:\Users\Luiz de Queiroz\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\obj\Debug\FichaOnline.pdb
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\FichaOnline.dll.config
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\FichaOnline.dll
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\FichaOnline.pdb
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\Antlr3.Runtime.dll
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\EntityFramework.dll
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\Newtonsoft.Json.dll
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Net.Http.Formatting.dll
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Web.Http.dll
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Web.Http.WebHost.dll
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Web.Mvc.dll
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Web.Optimization.dll
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Web.Providers.dll
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Web.Razor.dll
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Web.WebPages.Deployment.dll
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Web.WebPages.dll
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Web.WebPages.Razor.dll
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\WebGrease.dll
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\EntityFramework.xml
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\Newtonsoft.Json.xml
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Net.Http.Formatting.xml
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Web.Http.xml
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Web.Http.WebHost.xml
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Web.Mvc.xml
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Web.Razor.xml
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Web.WebPages.xml
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Web.WebPages.Deployment.xml
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\System.Web.WebPages.Razor.xml
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\obj\Debug\FichaOnline.dll
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\obj\Debug\FichaOnline.pdb
+C:\Users\Luiz de Queiroz\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\obj\Debug\FichaOnline.csprojResolveAssemblyReference.cache
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\Microsoft.Owin.dll
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\Microsoft.Owin.Security.dll
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\Owin.dll
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\Microsoft.Owin.xml
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\bin\Microsoft.Owin.Security.xml
+C:\Users\luizd\Dropbox\RolePlayingGame\Sistema - FichaOnline\FichaOnline\FichaOnline\obj\Debug\FichaOnline.csprojResolveAssemblyReference.cache

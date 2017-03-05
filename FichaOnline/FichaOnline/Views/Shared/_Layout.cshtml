@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Ficha Online</title>
+    <link rel="icon" href="~/Content/images/brasao-d&a.png" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="~/Content/Bootstrap/bootstrap-scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Content/Bootstrap/bootstrap-scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" language="javascript" src="~/Content/script.js"></script>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/Bootstrap/bootstrap-css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/Bootstrap/bootstrap-css/rpg-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/style.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/themes/base/jquery.ui.all.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/jquery.ui.autocomplete.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.12.4.js"></script>
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script type="text/javascript" language="javascript" src="~/Content/Scripts/jquery.maskedinput.min.js"></script>
+    @Styles.Render("~/Content/css")
+    @{
+        var background = "large-ocean";
+        if (ViewBag.Background != null)
+        {
+            background = "transparent";
+        }
+    }
+    @if (ViewBag.Chat == "OK")
+    {
+        <script src="~/Scripts/jquery.signalR-2.1.2.min.js"></script>
+        <script src="~/SignalR/Hubs"></script>
+        <script type="text/javascript">
+            $(function () {
+                //Create Hub on Air
+                var chat = $.connection.chatHub;
+
+                //Messages
+                $messages = $("#messages");
+                $ul = $("#messages ul");
+
+                //Client Side Method To Access From Server Side Method
+                chat.client.addMessage = function (de, msg) {
+                    var lado = (de == "@Session.SessionID") ? "eu" : "el";
+                    $ul.append("<li class=" + lado + "><br /><b class='text-uppercase'>" + de + ":</b> <i>" + msg + "</i></li>");
+                    $messages.animate({ scrollTop: $messages.prop("scrollHeight") }, 500);
+                }
+
+                $("#txtMsg").keypress(function (e) {
+                    //when enter
+                    if (e.which == 13) {
+
+                        //get value of input
+                        var input = $(this).val();
+
+                        //send message to "Server Side Method"
+                        chat.server.enviarMensagem("@Session.SessionID", input);
+
+                        //Reset TextBox
+                        $(this).val("");
+                    }
+                });
+                //Hub Starting
+                $.connection.hub.start();
+            });
+        </script>
+        <style>
+            #messages {
+                height: 300px;
+                overflow: auto;
+                color: #983b3b;
+                border: #d8bdbd 1px solid;
+                font: 11px tahoma, verdana, arial, sans-serif;
+            }
+
+                #messages ul {
+                    list-style-type: none;
+                    margin: 0;
+                    padding: 0;
+                }
+
+                #messages li {
+                    background: #f4eded;
+                    padding: 7px;
+                    margin: 1px 0;
+                }
+
+            .new {
+                display: none;
+            }
+
+            .eu {
+                text-align: right;
+            }
+
+            .el {
+                text-align: left;
+            }
+
+            #txtMsg {
+                margin-left: 5px;
+                width: 70%;
+                display: initial;
+            }
+
+            #btnEnv {
+                width: 28%;
+            }
+        </style>
+    }
+</head>
+<body class="@background" id="body">
+    @RenderBody()
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

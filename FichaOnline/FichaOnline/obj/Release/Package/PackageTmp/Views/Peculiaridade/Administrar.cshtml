@@ -1,0 +1,49 @@
+﻿@model List<FichaOnline.Models.Peculiaridade>
+@{
+    ViewBag.Background = "transparent";
+}
+@if (Model.Count > 0)
+{
+    <div class="col-md-8 no-padding">
+        <label class="text-form">Nome</label>
+    </div>
+    <div class="col-md-2 no-padding">
+        <label class="text-form">Teste</label>
+    </div>
+    <div class="col-md-2 no-padding">
+        <label class="text-form">Ação</label>
+    </div>
+    foreach (var p in Model)
+    {
+        <div class="col-md-8 no-padding">
+            <span class="text-high-high" title="@p.Descricao">@p.Nome</span>
+        </div>
+        <div class="col-md-2 no-padding">
+            <span class="text-high-high">@p.Teste.ToString("00")</span>
+        </div>
+        <div class="col-md-2 no-padding">
+            @Html.ActionLink("Editar", "Editar", "Peculiaridade", null, new { @class = "btn btn-xs btn-default", data_toggle = "modal", data_target = "#peculiaridade", onclick = "$('#administrar').attr('src','/Peculiaridade/Editar/" + p.Id + "')" })
+        </div>
+    }
+}
+else
+{
+    <h1>Não há!</h1>
+}
+<hr class="col-md-12" />
+<div class="col-md-offset-10 col-md-2 no-padding">
+    @Html.ActionLink("Criar..", "Criar", "Peculiaridade", null, new { @class = "btn btn-xs btn-success", data_toggle = "modal", data_target = "#peculiaridade", onclick = "$('#administrar').attr('src','/Peculiaridade/Criar?id=" + ((object[])ViewBag.IdTipo)[0] + "&tipo=" + ((object[])ViewBag.IdTipo)[1] + "')" })
+</div>
+<div id="peculiaridade" class="modal fade mothal transparent">
+    <div class="modal-dialog">
+        <div class="modal-content terrain">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="location.reload()">&times;</button>
+                <h5 class="modal-title">Administrar Peculiaridade</h5>
+            </div>
+            <div class="modal-body">
+                <iframe id="administrar" name="admin" frameborder="0" marginwidth="0" marginheight="0" width="100%" height="250px" style="background-color: transparent !important"></iframe>
+            </div>
+        </div>
+    </div>
+</div>

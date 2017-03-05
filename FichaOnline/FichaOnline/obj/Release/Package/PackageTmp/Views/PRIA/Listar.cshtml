@@ -1,0 +1,59 @@
+﻿@model List<FichaOnline.Models.PropriedadeRiquezaItemArma>
+@{
+    ViewBag.Background = "transparent";
+}
+
+@if (Model.Count > 0)
+{
+    var tipo = ViewBag.Tipo;
+    if (tipo == "pr/ri")
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            <div class="col-md-6 no-padding">
+                <div class="col-md-10 no-padding">
+                    <label class="text-form">Descrição</label>
+                </div>
+                <div class="col-md-2 no-padding">
+                    <label class="text-form">Qtd.</label>
+                </div>
+            </div>
+        }
+        foreach (var prri in Model)
+        {
+            <div class="col-md-6 no-padding">
+                <div class="col-md-10 no-padding">
+                    <span class="text-high-high">@prri.Descricao</span>
+                </div>
+                <div class="col-md-2 no-padding">
+                    <span class="text-high-high">@prri.PesoQuantidade.ToString("00")</span>
+                </div>
+            </div>
+        }
+    }
+    else if (tipo == "it/ar")
+    {
+        foreach (var itar in Model)
+        {
+            <div class="col-md-6 no-padding">
+                <label class="text-form">Nome</label> - <span class="text-high-high">@itar.Nome</span>
+            </div>
+            <div class="col-md-3 no-padding">
+                <label class="text-form">Tipo</label> - <span class="text-high-high">@itar.Subtipo</span>
+            </div>
+            <div class="col-md-3 no-padding">
+                <label class="text-form">Peso</label> - <span class="text-high-high">@itar.PesoQuantidade.ToString("00")</span>
+            </div>
+            <div class="col-md-9 no-padding">
+                <label class="text-form">Descrição</label> - <span class="text-high-high">@itar.Descricao</span>
+            </div>
+            <div class="col-md-3 no-padding">
+                <label class="text-form">Dano</label> - <span class="text-high-high">@itar.ValorDano.ToString("00")</span>
+            </div>
+        }
+    }
+}
+else
+{
+    <h1>Não há!</h1>
+}

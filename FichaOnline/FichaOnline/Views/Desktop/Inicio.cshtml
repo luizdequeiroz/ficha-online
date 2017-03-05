@@ -1,0 +1,44 @@
+﻿@model FichaOnline.Models.Usuario
+
+@{
+    var img = "semFoto.png";
+    var title = "Clique para definir sua foto.";
+    if (File.Exists(Server.MapPath(new Control().ResolveUrl("~/Content/Fotos/"+Model.Email+".png"))))
+    {
+        img = Model.Email + ".png";
+        title = "Clique para redefinir sua foto.";
+    }
+}
+
+<div class="desktop-body">
+    <div class="desktop-menu">
+        <div class="panel panel-default panel-photo">
+            <img id="foto" src="~/Content/Fotos/@img" width="100" title="@title" />
+            <div id="nome" class="text-center" title="@Model.Email"><h5>@Model.Nome</h5></div>
+        </div>
+        <a class="btn btn-lg btn-block btn-menu btn-terrain" href="/Desktop/Inicio" id="Inicio" onclick="clickMenu(this.id)" >Início</a>
+        <a class="btn btn-lg btn-block btn-menu btn-terrain" href="/Ficha/Minhas" target="principal" id="Minhas" onclick="clickMenu(this.id)">Minhas Fichas</a>
+        <a class="btn btn-lg btn-block btn-menu btn-terrain" href="/Ficha/Outras" target="principal" id="Outras" onclick="clickMenu(this.id)">Outras Fichas</a>
+        <a class="btn btn-lg btn-block btn-menu btn-terrain" href="/Ficha/Nova" target="principal" id="Nova" onclick="clickMenu(this.id)">Nova Ficha</a>
+        <a class="btn btn-lg btn-block btn-menu btn-terrain disabled" href="/Mapas/Mapas" id="Mapas" onclick="clickMenu(this.id)">MAPAS</a>
+        <div class="btn btn-lg btn-block btn-menu btn-terrain disabled" id="Jogar" onclick="clickMenu(this.id)">JOGAR</div>
+    </div>
+    <div class="desktop-content">
+        <div class="btn btn-xs tabuleiro" id="active-menu" title="Menu"></div>
+        <iframe id="frame" name="principal" frameborder="0" marginwidth="0" marginheight="0" style="background-color: transparent !important"></iframe>
+        @Html.ActionLink("X", "Sair", null, new { @class = "btn btn-xs btn-danger btn-sair" })
+    </div>
+</div>
+<script>
+    $('#active-menu').click(function () {
+        if (menuActived) {
+            $('.desktop-menu').animate({ left: '-150px' }, 500);
+            $('.desktop-content').animate({ left: '0' }, 500);
+            menuActived = false;
+        } else {
+            $('.desktop-menu').animate({ left: '0' }, 500);
+            $('.desktop-content').animate({ left: '150px' }, 500);
+            menuActived = true;
+        }
+    });
+</script>

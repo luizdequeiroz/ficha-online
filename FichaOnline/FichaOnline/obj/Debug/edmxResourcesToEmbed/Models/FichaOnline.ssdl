@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FichaOnline.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="FichaSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Idade" Type="int" Nullable="false" />
+    <Property Name="Classe" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Raca" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Adre" Type="int" Nullable="false" />
+    <Property Name="Ataq" Type="int" Nullable="false" />
+    <Property Name="Defe" Type="int" Nullable="false" />
+    <Property Name="Dest" Type="int" Nullable="false" />
+    <Property Name="Forc" Type="int" Nullable="false" />
+    <Property Name="Inte" Type="int" Nullable="false" />
+    <Property Name="Resi" Type="int" Nullable="false" />
+    <Property Name="Sabe" Type="int" Nullable="false" />
+    <Property Name="Velo" Type="int" Nullable="false" />
+    <Property Name="Vital" Type="int" Nullable="false" />
+    <Property Name="Sorte" Type="int" Nullable="false" />
+    <Property Name="Nota" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Experiencia" Type="int" Nullable="false" />
+    <Property Name="UsuarioId" Type="int" Nullable="false" />
+    <Property Name="MestreId" Type="int" />
+    <Property Name="Pontos" Type="int" Nullable="false" />
+    <Property Name="PtsPeculiaridades" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PeculiaridadeSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tipo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Descricao" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Teste" Type="int" Nullable="false" />
+    <Property Name="FichaId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PraticaSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Descricao" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Mod" Type="int" Nullable="false" />
+    <Property Name="PeculiaridadeId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PropriedadeRiquezaItemArmaSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tipo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Subtipo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Descricao" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PesoQuantidade" Type="int" Nullable="false" />
+    <Property Name="ValorDano" Type="int" Nullable="false" />
+    <Property Name="FichaId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UsuarioSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Senha" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DataCadastro" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Pergunta" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Resposta" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DataNascimento" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_FichaPeculiaridade">
+    <End Role="FichaSet" Type="Self.FichaSet" Multiplicity="1" />
+    <End Role="PeculiaridadeSet" Type="Self.PeculiaridadeSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FichaSet">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PeculiaridadeSet">
+        <PropertyRef Name="FichaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FichaPropriedadeRiquezaItemArma">
+    <End Role="FichaSet" Type="Self.FichaSet" Multiplicity="1" />
+    <End Role="PropriedadeRiquezaItemArmaSet" Type="Self.PropriedadeRiquezaItemArmaSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FichaSet">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PropriedadeRiquezaItemArmaSet">
+        <PropertyRef Name="FichaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PeculiaridadePratica">
+    <End Role="PeculiaridadeSet" Type="Self.PeculiaridadeSet" Multiplicity="1" />
+    <End Role="PraticaSet" Type="Self.PraticaSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PeculiaridadeSet">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PraticaSet">
+        <PropertyRef Name="PeculiaridadeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsuarioFicha">
+    <End Role="UsuarioSet" Type="Self.UsuarioSet" Multiplicity="1" />
+    <End Role="FichaSet" Type="Self.FichaSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UsuarioSet">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FichaSet">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FichaOnlineStoreContainer">
+    <EntitySet Name="FichaSet" EntityType="Self.FichaSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PeculiaridadeSet" EntityType="Self.PeculiaridadeSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PraticaSet" EntityType="Self.PraticaSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PropriedadeRiquezaItemArmaSet" EntityType="Self.PropriedadeRiquezaItemArmaSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UsuarioSet" EntityType="Self.UsuarioSet" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_FichaPeculiaridade" Association="Self.FK_FichaPeculiaridade">
+      <End Role="FichaSet" EntitySet="FichaSet" />
+      <End Role="PeculiaridadeSet" EntitySet="PeculiaridadeSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FichaPropriedadeRiquezaItemArma" Association="Self.FK_FichaPropriedadeRiquezaItemArma">
+      <End Role="FichaSet" EntitySet="FichaSet" />
+      <End Role="PropriedadeRiquezaItemArmaSet" EntitySet="PropriedadeRiquezaItemArmaSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PeculiaridadePratica" Association="Self.FK_PeculiaridadePratica">
+      <End Role="PeculiaridadeSet" EntitySet="PeculiaridadeSet" />
+      <End Role="PraticaSet" EntitySet="PraticaSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsuarioFicha" Association="Self.FK_UsuarioFicha">
+      <End Role="UsuarioSet" EntitySet="UsuarioSet" />
+      <End Role="FichaSet" EntitySet="FichaSet" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

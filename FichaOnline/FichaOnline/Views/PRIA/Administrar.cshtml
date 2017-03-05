@@ -1,0 +1,96 @@
+﻿@model List<FichaOnline.Models.PropriedadeRiquezaItemArma>
+@{
+    ViewBag.Background = "transparent";
+    var tipo = (string)ViewBag.Tipo;
+}
+@if (Model.Count > 0)
+{
+    if (tipo == "pr/ri")
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            <div class="col-md-6 col-sm-6 col-xs-6 no-padding">
+                <div class="col-md-8 col-sm-8 col-xs-8 no-padding">
+                    <label class="text-form">Descrição</label>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-2 no-padding">
+                    <label class="text-form">Qtd.</label>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-2 no-padding">
+                    <label class="text-form">Ação</label>
+                </div>
+            </div>
+        }
+        foreach (var prri in Model)
+        {
+            <div class="col-md-6 col-sm-6 col-xs-6 no-padding">
+                <div class="col-md-8 col-sm-8 col-xs-8 no-padding">
+                    <span class="text-high-high">@prri.Descricao</span>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-2 no-padding">
+                    <span class="text-high-high">@prri.PesoQuantidade.ToString("00")</span>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-2 no-padding">
+                    @Html.ActionLink("Editar", "Editar", "PRIA", null, new { @class = "btn btn-xs btn-default", data_toggle = "modal", data_target = "#" + tipo.Remove(2, 1) + "pria", onclick = "$('#" + tipo.Remove(2, 1) + "administrar').attr('src','/PRIA/Editar/" + prri.Id + "')" })
+                </div>
+            </div>
+        }
+    }
+    else if (tipo == "it/ar")
+    {
+        foreach (var itar in Model)
+        {
+            <div class="col-md-6 col-sm-6 col-xs-6 no-padding">
+                <label class="text-form">Nome</label> - <span class="text-high-high">@itar.Nome</span>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-3 no-padding">
+                <label class="text-form">Tipo</label> - <span class="text-high-high">@itar.Subtipo</span>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-3 no-padding">
+                <label class="text-form">Peso</label> - <span class="text-high-high">@itar.PesoQuantidade.ToString("00")</span>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-9 no-padding">
+                <label class="text-form">Descrição</label> - <span class="text-high-high">@itar.Descricao</span>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-3 no-padding">
+                <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
+                    <label class="text-form">Dano</label> - <span class="text-high-high">@itar.ValorDano.ToString("00")</span>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
+                    @Html.ActionLink("Editar", "Editar", "PRIA", null, new { @class = "btn btn-xs btn-default", data_toggle = "modal", data_target = "#" + tipo.Remove(2, 1) + "pria", onclick = "$('#" + tipo.Remove(2, 1) + "administrar').attr('src','/PRIA/Editar/" + itar.Id + "')" })
+                </div>
+            </div>
+        }
+    }
+}
+else
+{
+    <h1>Não há!</h1>
+}
+<hr class="col-md-12" />
+<div class="col-md-offset-10 col-md-2 no-padding">
+    @Html.ActionLink("Criar..", "Criar", "PRIA", null, new { @class = "btn btn-xs btn-success", data_toggle = "modal", data_target = "#"+tipo.Remove(2, 1) + "pria", onclick = "$('#" + tipo.Remove(2, 1) + "administrar').attr('src','/PRIA/Criar?id=" + ((object[])ViewBag.IdTipo)[0] + "&tipo=" + ((object[])ViewBag.IdTipo)[1] + "')" })
+</div>
+<div id="@(tipo.Remove(2,1))pria" class="modal fade mothal transparent">
+    <div class="modal-dialog">
+        <div class="modal-content terrain">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="location.reload()">&times;</button>
+                <h5 class="modal-title">
+                    Administrar
+                    @if (tipo == "pr/ri")
+                    {
+                        <span> Propriedade/Riqueza</span>
+                    }
+                    else
+                    {
+                        <span> Item/Arma</span>
+                    }
+                </h5>
+            </div>
+            <div class="modal-body">
+                <iframe id="@(tipo.Remove(2,1))administrar" name="admin" frameborder="0" marginwidth="0" marginheight="0" width="100%" height="250px" style="background-color: transparent !important"></iframe>
+            </div>
+        </div>
+    </div>
+</div>

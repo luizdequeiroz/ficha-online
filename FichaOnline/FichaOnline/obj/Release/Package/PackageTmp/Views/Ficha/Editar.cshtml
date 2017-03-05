@@ -1,0 +1,233 @@
+﻿@model FichaOnline.Models.Facade.FichaFacade
+@{
+    ViewBag.Background = "transparent";
+
+    var titulo = "Uma das minhas fichas.";
+    if (((FichaOnline.Models.Usuario)Session["usuario"]).Id != Model.Ficha.UsuarioId)
+    {
+        var jogador = new FichaOnline.Models.DAO.UsuarioDao().SelecionarPorId(Model.Ficha.UsuarioId);
+        titulo = "Ficha do jogador " + jogador.Nome + " (" + jogador.Email + ")";
+    }
+    int nivel = (Model.Adre + Model.Ataq + Model.Defe + Model.Dest + Model.Forc + Model.Inte + Model.Resi + Model.Sabe + Model.Velo) / 9;
+    var PV = Model.Resi * 10;
+    var nota = "NÍVEL: " + nivel.ToString("00") + "\n"
+              + "PV: " + PV.ToString("000") + "\n"
+              + "\n" + Model.Nota;
+              
+    var nome = ((FichaOnline.Models.Usuario)Session["usuario"]).Nome;
+    var email = ((FichaOnline.Models.Usuario)Session["usuario"]).Email;
+}
+<script>
+    @Html.Raw(Session["alert"])
+    @{ Session.Remove("alert"); }
+
+    $(function () {
+        $('#Classe').autocomplete({
+            source: '@Url.Action("AutocompleteClasse")'
+        });
+
+        $('#Raca').autocomplete({
+            source: '@Url.Action("AutocompleteRaca")'
+        });
+
+        $('#Jogador').autocomplete({
+            source: '@Url.Action("AutocompleteJogador")'
+        });
+
+        $('#Mestre').autocomplete({
+            source: '@Url.Action("AutocompleteMestre")'
+        });
+    });
+</script>
+@if (Session["autorizado"].ToString() == "False")
+{
+    <script>
+        $(function () {
+            $('#Idade').attr('readonly', 'true');
+            $('#Classe').attr('readonly', 'true');
+            $('#Raca').attr('readonly', 'true');
+            $('#Sorte').attr('readonly', 'true');
+            $('#Vital').attr('readonly', 'true');
+            $('#Nota').attr('readonly', 'true');
+        });
+    </script>
+    if (Model.Pontos == 0)
+    {
+        <script>
+            $(function () {
+                $.each($('.teste'), function () {
+                    $(this).attr('readonly', 'true');
+                });
+            });
+        </script>
+    }
+    if (Model.Mestre != nome + ", " + email)
+    {
+        <script>
+            $(function () {
+                $('#Pontos').attr('readonly', 'true');
+            });
+        </script>
+    }
+}
+<div class="centralizar">
+    <div class="borda-cadastro borda-nova">
+        <div class="conteudo-cadastro terrain scrollable conteudo-nova">
+            <fieldset>
+                <legend class="text-whitesmoke">@titulo</legend>
+                @using (Html.BeginForm())
+                {
+                    <div id="summary">
+                        @Html.ValidationSummary("Preencha os campos obrigatórios!")
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-2">
+                            <label class="control-label">
+                                <span class="text-form">Pts a Incluir: </span>
+                            </label>
+                            <input type="hidden" id="pts" value="@Model.Pontos" />
+                            @Html.TextBoxFor(model => model.Pontos, new { type = "number", @class = "form-control" })
+                        </div>
+                        <div class="col-md-5">
+                            <label class="control-label">
+                                <span class="text-form">Jogador: </span>
+                            </label>
+                            @Html.TextBoxFor(model => model.Jogador, new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-5">
+                            <label class="control-label">
+                                <span class="text-form">Mestre: </span> @Html.ValidationMessageFor(model => model.Mestre)
+                            </label>
+                            @Html.TextBoxFor(model => model.Mestre, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <hr class="col-md-12" />
+                    <div class="col-md-2">
+                        <div class="col-md-12 no-padding"><label class="text-form">ADRE</label> @Html.TextBoxFor(model => model.Adre, new { min = @Model.Adre, type = "number", @class = "form-control teste" })</div>
+                        <div class="col-md-12 no-padding"><label class="text-form">ATAQ</label> @Html.TextBoxFor(model => model.Ataq, new { min = @Model.Ataq, type = "number", @class = "form-control teste" })</div>
+                        <div class="col-md-12 no-padding"><label class="text-form">DEFE</label> @Html.TextBoxFor(model => model.Defe, new { min = @Model.Defe, type = "number", @class = "form-control teste" })</div>
+                        <div class="col-md-12 no-padding"><label class="text-form">DEST</label> @Html.TextBoxFor(model => model.Dest, new { min = @Model.Dest, type = "number", @class = "form-control teste" })</div>
+                        <div class="col-md-12 no-padding"><label class="text-form">FORÇ</label> @Html.TextBoxFor(model => model.Forc, new { min = @Model.Forc, type = "number", @class = "form-control teste" })</div>
+                        <div class="col-md-12 no-padding"><label class="text-form">INTE</label> @Html.TextBoxFor(model => model.Inte, new { min = @Model.Inte, type = "number", @class = "form-control teste" })</div>
+                        <div class="col-md-12 no-padding"><label class="text-form">RESI</label> @Html.TextBoxFor(model => model.Resi, new { min = @Model.Resi, type = "number", @class = "form-control teste" })</div>
+                        <div class="col-md-12 no-padding"><label class="text-form">SABE</label> @Html.TextBoxFor(model => model.Sabe, new { min = @Model.Sabe, type = "number", @class = "form-control teste" })</div>
+                        <div class="col-md-12 no-padding"><label class="text-form">VELO</label> @Html.TextBoxFor(model => model.Velo, new { min = @Model.Velo, type = "number", @class = "form-control teste" })</div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="col-md-3">
+                            <div class="col-md-12 no-padding"><label class="text-form">Vital</label> @Html.TextBoxFor(model => model.Vital, new { type = "number", @class = "form-control" })</div>
+                            <div class="col-md-12 no-padding"><label class="text-form">Sorte</label> @Html.TextBoxFor(model => model.Sorte, new { type = "number", @class = "form-control" })</div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="col-md-8"><label class="text-form">Nome:</label> @Html.TextBoxFor(model => model.Nome, new { @class = "form-control" })</div>
+                            <div class="col-md-4"><label class="text-form">Idade:</label> @Html.TextBoxFor(model => model.Idade, new { type = "number", @class = "form-control" })</div>
+                            <div class="col-md-8"><label class="text-form">Classe:</label> @Html.TextBoxFor(model => model.Classe, new { @class = "form-control" })</div>
+                            <div class="col-md-4"><label class="text-form">Raça:</label> @Html.TextBoxFor(model => model.Raca, new { @class = "form-control" })</div>
+                        </div>
+                        <div class="col-md-6">
+                            <strong class="text-high-high">Capacidades</strong>
+                            <hr class="no-margin" />
+                            <div class="col-md-12 scrollable ficha-bloco">
+                                @if (Session["autorizado"].ToString() == "False")
+                                {
+                                    @Html.Action("Listar", "Peculiaridade", new { fichaId = Model.Ficha.Id, tipo = "cap" })
+                                }
+                                else
+                                {
+                                    @Html.Action("Administrar", "Peculiaridade", new { fichaId = Model.Ficha.Id, tipo = "cap" })
+                                }
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <strong class="text-high-high">Perícias</strong>
+                            <hr class="no-margin" />
+                            <div class="col-md-12 scrollable ficha-bloco">
+                                @if (Session["autorizado"].ToString() == "False")
+                                {
+                                    @Html.Action("Listar", "Peculiaridade", new { fichaId = Model.Ficha.Id, tipo = "per" })
+                                }
+                                else
+                                {
+                                    @Html.Action("Administrar", "Peculiaridade", new { fichaId = Model.Ficha.Id, tipo = "per" })
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-7 no-padding">
+                            <div class="col-md-12 no-padding">
+                                <strong class="text-high-high">Propriedades/Riquezas</strong>
+                                <hr class="no-margin" />
+                                <div class="col-md-12 scrollable ficha-bloco">
+                                    @if (Session["autorizado"].ToString() == "False")
+                                    {
+                                        @Html.Action("Listar", "PRIA", new { fichaId = Model.Ficha.Id, tipo = "pr/ri" })
+                                    }
+                                    else
+                                    {
+                                        @Html.Action("Administrar", "PRIA", new { fichaId = Model.Ficha.Id, tipo = "pr/ri" })
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <strong class="text-high-high">Desvantagens</strong>
+                            <hr class="no-margin" />
+                            <div class="col-md-12 scrollable">
+                                @if (Session["autorizado"].ToString() == "False")
+                                {
+                                    @Html.Action("Listar", "Peculiaridade", new { fichaId = Model.Ficha.Id, tipo = "des" })
+                                }
+                                else
+                                {
+                                    @Html.Action("Administrar", "Peculiaridade", new { fichaId = Model.Ficha.Id, tipo = "des" })
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-7 no-padding">
+                            <div class="col-md-12 no-padding">
+                                <strong class="text-high-high">Itens/Armas</strong>
+                                <hr class="no-margin" />
+                                <div class="col-md-12 scrollable ficha-bloco">
+                                    @if (Session["autorizado"].ToString() == "False")
+                                    {
+                                        @Html.Action("Listar", "PRIA", new { fichaId = Model.Ficha.Id, tipo = "it/ar" })
+                                    }
+                                    else
+                                    {
+                                        @Html.Action("Administrar", "PRIA", new { fichaId = Model.Ficha.Id, tipo = "it/ar" })
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <strong class="text-high-high">Anotações do Mestre</strong>
+                            <hr class="no-margin" />
+                            @Html.TextAreaFor(model => model.Nota, new { rows = "10", @class = "form-control col-md-12" })
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-7 no-padding">
+                            <div class="col-md-12 no-padding">
+                                <strong class="text-high-high">Pontos de Experiência</strong>
+                                <hr class="no-margin" />
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <strong class="text-high-high">Ações</strong>
+                            <hr class="no-margin" />
+                            <input type="submit" class="btn btn-primary btn-block" value="Salvar" onclick="$('#summary').attr('class', 'field-validation-error')" />
+                            <hr />
+                            <a href="/Ficha/Minhas" class="btn btn-xs btn-danger btn-block">Cancelar</a>
+                        </div>
+                    </div>
+                }
+            </fieldset>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

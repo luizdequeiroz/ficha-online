@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="FichaOnline" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="FichaOnlineContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="UsuarioSet" EntityType="FichaOnline.Usuario" />
+    <EntitySet Name="FichaSet" EntityType="FichaOnline.Ficha" />
+    <AssociationSet Name="UsuarioFicha" Association="FichaOnline.UsuarioFicha">
+      <End Role="Usuario" EntitySet="UsuarioSet" />
+      <End Role="Ficha" EntitySet="FichaSet" />
+    </AssociationSet>
+    <EntitySet Name="PeculiaridadeSet" EntityType="FichaOnline.Peculiaridade" />
+    <EntitySet Name="PraticaSet" EntityType="FichaOnline.Pratica" />
+    <AssociationSet Name="FichaPeculiaridade" Association="FichaOnline.FichaPeculiaridade">
+      <End Role="Ficha" EntitySet="FichaSet" />
+      <End Role="Peculiaridade" EntitySet="PeculiaridadeSet" />
+    </AssociationSet>
+    <AssociationSet Name="PeculiaridadePratica" Association="FichaOnline.PeculiaridadePratica">
+      <End Role="Peculiaridade" EntitySet="PeculiaridadeSet" />
+      <End Role="Pratica" EntitySet="PraticaSet" />
+    </AssociationSet>
+    <EntitySet Name="PropriedadeRiquezaItemArmaSet" EntityType="FichaOnline.PropriedadeRiquezaItemArma" />
+    <AssociationSet Name="FichaPropriedadeRiquezaItemArma" Association="FichaOnline.FichaPropriedadeRiquezaItemArma">
+      <End Role="Ficha" EntitySet="FichaSet" />
+      <End Role="PropriedadeRiquezaItemArma" EntitySet="PropriedadeRiquezaItemArmaSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" />
+    <Property Name="Nome" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Senha" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="DataCadastro" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Pergunta" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Resposta" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="DataNascimento" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Fichas" Relationship="FichaOnline.UsuarioFicha" FromRole="Usuario" ToRole="Ficha" />
+  </EntityType>
+  <EntityType Name="Ficha">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Idade" Type="Int32" Nullable="false" />
+    <Property Name="Classe" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Raca" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Adre" Type="Int32" Nullable="false" />
+    <Property Name="Ataq" Type="Int32" Nullable="false" />
+    <Property Name="Defe" Type="Int32" Nullable="false" />
+    <Property Name="Dest" Type="Int32" Nullable="false" />
+    <Property Name="Forc" Type="Int32" Nullable="false" />
+    <Property Name="Inte" Type="Int32" Nullable="false" />
+    <Property Name="Resi" Type="Int32" Nullable="false" />
+    <Property Name="Sabe" Type="Int32" Nullable="false" />
+    <Property Name="Velo" Type="Int32" Nullable="false" />
+    <Property Name="Vital" Type="Int32" Nullable="false" />
+    <Property Name="Sorte" Type="Int32" Nullable="false" />
+    <Property Name="Nota" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Experiencia" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Usuario" Relationship="FichaOnline.UsuarioFicha" FromRole="Ficha" ToRole="Usuario" />
+    <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Peculiaridades" Relationship="FichaOnline.FichaPeculiaridade" FromRole="Ficha" ToRole="Peculiaridade" />
+    <NavigationProperty Name="PropriedadesRiquezasItensArmas" Relationship="FichaOnline.FichaPropriedadeRiquezaItemArma" FromRole="Ficha" ToRole="PropriedadeRiquezaItemArma" />
+    <Property Name="MestreId" Type="Int32" Nullable="true" />
+    <Property Name="Pontos" Type="Int32" Nullable="false" />
+    <Property Name="PtsPeculiaridades" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="UsuarioFicha">
+    <End Type="FichaOnline.Usuario" Role="Usuario" Multiplicity="1" />
+    <End Type="FichaOnline.Ficha" Role="Ficha" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ficha">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Peculiaridade">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tipo" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Nome" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Descricao" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Teste" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Ficha" Relationship="FichaOnline.FichaPeculiaridade" FromRole="Peculiaridade" ToRole="Ficha" />
+    <Property Name="FichaId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Praticas" Relationship="FichaOnline.PeculiaridadePratica" FromRole="Peculiaridade" ToRole="Pratica" />
+  </EntityType>
+  <EntityType Name="Pratica">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Descricao" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Mod" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Peculiaridade" Relationship="FichaOnline.PeculiaridadePratica" FromRole="Pratica" ToRole="Peculiaridade" />
+    <Property Name="PeculiaridadeId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FichaPeculiaridade">
+    <End Type="FichaOnline.Ficha" Role="Ficha" Multiplicity="1" />
+    <End Type="FichaOnline.Peculiaridade" Role="Peculiaridade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ficha">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Peculiaridade">
+        <PropertyRef Name="FichaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PeculiaridadePratica">
+    <End Type="FichaOnline.Peculiaridade" Role="Peculiaridade" Multiplicity="1" />
+    <End Type="FichaOnline.Pratica" Role="Pratica" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Peculiaridade">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pratica">
+        <PropertyRef Name="PeculiaridadeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="PropriedadeRiquezaItemArma">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tipo" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Subtipo" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Nome" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Descricao" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="PesoQuantidade" Type="Int32" Nullable="false" />
+    <Property Name="ValorDano" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Ficha" Relationship="FichaOnline.FichaPropriedadeRiquezaItemArma" FromRole="PropriedadeRiquezaItemArma" ToRole="Ficha" />
+    <Property Name="FichaId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FichaPropriedadeRiquezaItemArma">
+    <End Type="FichaOnline.Ficha" Role="Ficha" Multiplicity="1" />
+    <End Type="FichaOnline.PropriedadeRiquezaItemArma" Role="PropriedadeRiquezaItemArma" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ficha">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PropriedadeRiquezaItemArma">
+        <PropertyRef Name="FichaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

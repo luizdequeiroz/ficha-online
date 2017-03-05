@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="FichaOnlineContainer-Web.config Connection String" description="FichaOnlineContainer Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.FichaOnline.csdl|res://*/Models.FichaOnline.ssdl|res://*/Models.FichaOnline.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=ficha.database.windows.net;initial catalog=FichaOnline;persist security info=True;user id=ficha;password=@9Protego9Totalis;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\luizd\\Dropbox\\RolePlayingGame\\Sistema\ -\ FichaOnline\\FichaOnline\\FichaOnline\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='FichaOnlineContainer']/@connectionString" />
+  </parameter>
+</parameters>
