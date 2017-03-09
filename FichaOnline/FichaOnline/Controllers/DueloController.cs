@@ -31,7 +31,7 @@ namespace FichaOnline.Controllers
         [HttpPost]
         public ActionResult Duelando(int[] fichasId)
         {
-            if (fichasId.Count() >= 2)
+            if (fichasId.Count() >= 2) 
             {
                 List<Ficha> fichas = new List<Ficha>();
                 foreach (int id in fichasId)
