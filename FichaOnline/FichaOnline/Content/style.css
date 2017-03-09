@@ -8789,6 +8789,11 @@ fieldset {
     box-shadow: black 10px 10px 30px;
 }
 
+.item-small {
+    padding-top: 10px;
+    height: 200px;
+}
+
 .borda-ficha {
     width: 970px;
     background: #6e5c4a;
@@ -9065,4 +9070,10 @@ fieldset {
 
 .ficha-bloco {
     max-height: 200px;
+}
+
+.chbx {
+    width: 20px;
+    height: 20px;
+    float: right;
 }
